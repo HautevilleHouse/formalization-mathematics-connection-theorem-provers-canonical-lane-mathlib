@@ -48,15 +48,20 @@ theorem theorem_statement_certificate_lane_checked :
 
 theorem classical_source_boundary_carried_checked :
     ClassicalSourceBoundaryCarried := by
-  exact And.intro rfl rfl
+  simp [ClassicalSourceBoundaryCarried, formalizationCertificate.theoremBoundaryOpen, formalizationCertificate.sourceConjectureClosureClaimed]
 
 theorem manifold_constrained_theorem_closed_checked :
     ManifoldConstrainedTheoremClosed := by
-  exact And.intro rfl (And.intro rfl rfl)
+  simp [ManifoldConstrainedTheoremClosed, baselineCertificateLane, baselineCertificateAllPass, outsideConstantDependencyCount]
 
 theorem theorem_layer_internalized_checked :
     TheoremLayerInternalized := by
-  exact And.intro rfl (And.intro rfl (And.intro classical_source_boundary_carried_checked manifold_constrained_theorem_closed_checked))
+  unfold TheoremLayerInternalized
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · exact theorem_statement_source_key_checked
+  · exact theorem_statement_certificate_lane_checked
+  · exact classical_source_boundary_carried_checked
+  · exact manifold_constrained_theorem_closed_checked
 
 end FormalizationMathematicsConnectionTheoremProversCanonicalLaneLean
 end HautevilleHouse
